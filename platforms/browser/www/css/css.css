@@ -498,7 +498,9 @@ button.boton-cerrar:hover {
 .caja img {
 	max-width: 100%;
 }
-
+.caja.notclick{
+    pointer-events: none;
+}
 .caja-imagen, .caja-iconos {
     display: flex;
 }

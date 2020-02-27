@@ -176,6 +176,7 @@ function instanciarImagenes() {
 function jugada() {
 
     if(!juego_terminado) {
+        this.classList.add('notclick');
         this.children[0].classList.remove("visibility-hidden");
         var ficha    = this.getAttribute("data-carta");
         fichas_jugadas.push(ficha);
@@ -240,7 +241,22 @@ function comprobarGanador() {
 console.log("holis");
     if(fichas_jugadas[0] == fichas_jugadas[1]){
         sumarPuntosParciales();
+        var ficha = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "']");
+        
+        ficha.item(0).classList.add("notclick");
+        ficha.item(1).classList.add("notclick");
+        
     } else{
+        var caja1 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "']");
+        var caja2 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[1] + "']");
+        
+        caja1.item(0).classList.remove("notclick");
+        caja2.item(0).classList.remove("notclick");
+        caja1.item(1).classList.remove("notclick");
+        caja2.item(1).classList.remove("notclick");
+        
+        
+        
         var ficha1 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "'] img");
         var ficha2 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[1] + "'] img");
         
@@ -250,7 +266,7 @@ console.log("holis");
             ficha1.item(1).classList.add("visibility-hidden");
             ficha2.item(1).classList.add("visibility-hidden");
         
-        }, 1000);
+        }, 500);
     }
     
      cambiarJugador();

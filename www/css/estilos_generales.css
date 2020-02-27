@@ -1,0 +1,170 @@
+/* Estilos Generales */
+
+.text-center {
+    text-align: center !important;
+}
+
+/* Tipografias */ 
+
+@font-face {
+    font-family: Fipps-Regular;
+    src: url(Fipps-Regular.otf);
+}
+
+@font-face {
+    font-family: Circular-Medium;
+    src: url(CircularStd-Medium.otf);
+}
+
+@font-face {
+    font-family: Circular-Bold;
+    src: url(CircularStd-Bold.otf);
+}
+
+@font-face {
+    font-family: Circular-Book;
+    src: url(CircularStd-Book.otf);
+}
+
+@font-face {
+    font-family: Circular-BookItalic;
+    src: url(CircularStd-BookItalic.otf);
+}
+
+/* Index */ 
+
+.main-index {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.estacion_juegos {
+    font-family: Fipps-Regular;
+    font-size: 1.7rem;
+    line-height: 1.4;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#comenzar-app {
+    font-family: Circular-Book;
+    margin: 2rem auto;
+    display: block;
+    border: 2px solid black;
+    border-radius: 22px;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    color: black;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.85);
+}
+
+.contenedor-centrado {
+    position: absolute;
+    transform: translate(0%, 100%);
+}
+
+#imgjugador_1, #imgjugador_2 {
+    width: 116px;
+    height: 116px;
+    object-fit: cover;
+    object-position: center;
+}
+/* Seteo Inicial */
+
+.main-settings, .main-juegos {
+    height: 85%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.bienvenidos {
+    font-family: Circular-Bold;
+    text-align: center;
+}
+
+.settings-inicial {
+    margin: 1rem;
+}
+
+.seteo-jugador1 , .seteo-jugador2 {
+    margin: 1rem;
+    width: 50%;
+    display: inline-block;
+}
+
+.settings-inicial form {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+}
+
+#guardar_form {
+    font-family: Circular-Medium;
+    background-color: #ED1582;
+    color: white;
+    padding: 0.5rem 2rem;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    border-radius: 25px;
+    box-shadow: 0px 0px 12px 1px rgba(237, 21, 130, 0.44);
+}
+
+.settings-inicial input {
+    box-shadow: 1px 6px 12px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+/* Juegos */
+
+.main-juegos h1 {
+    font-family: Circular-Bold;
+    text-transform: uppercase;
+    width: 70%;
+    text-align: center;
+    margin: 1rem auto;
+    display: block;
+}
+
+.main-juegos a.caja {
+    width: 90%;
+    display: block;
+}
+
+.jugador1, .jugador2 {
+    width: 70%;
+}
+
+#nombre1, #nombre2, #apodo1, #apodo2, .main-juegos a {
+    font-family: Circular-Bold;
+    text-align: center;
+    margin-bottom: 0.3rem;
+}
+
+#puntos1, #puntos2 {
+    font-family: Circular-Book;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+/* Bordes */
+
+.border-left-none { border-left: none;}
+.border-bottom-none { border-bottom: none; }
+.border-right-none { border-right: none; }
+.border-top-none { border-top: none; }
+.border-none { border: none; }
+
+/* Input */ 
+
+input {
+    width: 100% !important;
+}

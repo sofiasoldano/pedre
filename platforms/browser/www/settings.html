@@ -1,0 +1,49 @@
+
+<html>
+    <head>
+        <title>Datos Personales</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="css/estilos_generales.css">
+    </head>
+    <body class="page-settings">
+        <!-- Main -->
+        <main class="main-settings">
+            <h1 class="bienvenidos">¡Bienvenidos!</h1>
+            <div class="settings-inicial">
+                <form id="formulario" method="post" action="" class="margin-bottom-2">
+                    <div class="seteo-jugador1">
+                        <div class="caja margin-bottom-4"> 
+                            <img src="img/camera.svg" alt="Camara" onclick=" defjugadores(1), capturePhoto();" id="imgjugador_1">
+                        </div>
+                        <div class="formulariojugador">
+                            <input type="text" name="nombre1" id="nombre1" placeholder="Nombre" required>
+                            <br>
+                            <input type="text" name="apodo1" id="apodo1" placeholder="Apodo" required>
+                        </div>
+                    </div>
+                    <div class="seteo-jugador2">
+                        <div class="caja margin-bottom-4"> 
+                            <img src="img/camera.svg" alt="Camara" onclick=" defjugadores(2), capturePhoto();" id="imgjugador_2">
+                        </div>
+                        <div class="formulariojugador">
+                            <input type="text" name="nombre2" id="nombre2" placeholder="Nombre" required>
+                            <br>
+                            <input type="text" name="apodo2" id="apodo2" placeholder="Apodo" required>
+                        </div>
+                    </div>
+                </form>
+                <div class="clear-both">
+                    <a href="juegos.html" id="guardar_form">Jugar</a>
+                </div> 
+            </div>
+            <div>
+                <img src="img/GamePattern.svg" alt="Game Pattern">
+            </div>
+        </main>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src="js/camera.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+    </html>

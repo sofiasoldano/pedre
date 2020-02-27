@@ -1,0 +1,66 @@
+
+<html>
+    <head>
+        <title>TATETI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="css/estilos_generales.css">
+        <link rel="stylesheet" href="css/estilos_tateti.css">
+    </head>
+    <body>
+        <!-- Header -->
+        <header>
+            <!-- Volver -->
+            <!-- Jugadores -->
+            <!-- Puntaje -->
+            <h3>Puntaje Jugador 1: <span id="puntos-jugador1"></span></h3>
+            <h3>Puntaje Jugador 2: <span id="puntos-jugador2"></span></h3>
+        </header>
+        <main>
+            <!-- Tateti -->
+            <h1>Tateti</h1>
+            <section class="tateti">
+                <div class="fila">
+                    <div class="columna-xs-4">
+                        <div data-fila="0" data-columna="0" class="casillero border-left-none border-top-none"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="0" data-columna="1" class="casillero border-top-none"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="0" data-columna="2" class="casillero border-right-none border-top-none"></div>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna-xs-4">
+                        <div data-fila="1" data-columna="0" class="casillero border-left-none"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="1" data-columna="1" class="casillero"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="1" data-columna="2" class="casillero border-right-none"></div>
+                    </div>
+                </div>
+                <div class="fila">
+                    <div class="columna-xs-4">
+                        <div data-fila="2" data-columna="0" class="casillero border-left-none border-bottom-none"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="2" data-columna="1" class="casillero border-bottom-none"></div>
+                    </div>
+                    <div class="columna-xs-4">
+                        <div data-fila="2" data-columna="2" class="casillero  border-right-none border-bottom-none"></div>
+                    </div>
+                </div>
+            </section>       
+            <!-- Mensaje -->
+            <h2 id="ganador"></h2>
+            <!-- Jugar de Nuevo -->
+            <button id="btn-reset" class="display-none">Jugar de Nuevo</button>
+        </main>
+        <script src="js/app.js"></script>
+        <script src="js/tateti.js"></script>
+    </body>
+    </html>

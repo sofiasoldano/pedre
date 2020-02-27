@@ -1,0 +1,19 @@
+/* Estilos Tateti */    
+
+.tateti {
+    padding: 1rem;
+}
+
+.casillero {
+    min-height: 110px;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Elementos del Tateti */
+
+.jugada {
+    font-size: 4rem;
+}

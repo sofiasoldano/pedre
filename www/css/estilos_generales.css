@@ -4,6 +4,22 @@
     text-align: center !important;
 }
 
+.boton-general { 
+    font-family: Circular-Book;
+    margin: 1rem auto;
+    display: block;
+    border: 2px solid black;
+    border-radius: 22px;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    color: black;
+    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.85);
+}
+
+.turno_jugador {
+    background: rgba(255, 255, 0, 0.16);
+}
+
 /* Tipografias */ 
 
 @font-face {
@@ -53,15 +69,7 @@
 }
 
 #comenzar-app {
-    font-family: Circular-Book;
     margin: 2rem auto;
-    display: block;
-    border: 2px solid black;
-    border-radius: 22px;
-    background: white;
-    padding: 0.8rem 1.5rem;
-    color: black;
-    box-shadow: 4px 4px 0px 0px rgba(0,0,0,0.85);
 }
 
 .contenedor-centrado {
@@ -134,13 +142,17 @@
     display: block;
 }
 
+.main-juegos {
+    height: 100%;
+}
+
 .main-juegos a.caja {
     width: 90%;
     display: block;
 }
 
 .jugador1, .jugador2 {
-    width: 70%;
+    width: 90%;
 }
 
 #nombre1, #nombre2, #apodo1, #apodo2, .main-juegos a {
@@ -149,10 +161,24 @@
     margin-bottom: 0.3rem;
 }
 
+#apodo1, #apodo2 {
+    font-size: 0.8rem;
+}
+
 #puntos1, #puntos2 {
     font-family: Circular-Book;
     text-align: center;
     font-size: 0.9rem;
+}
+
+/* Header */
+
+header {
+    margin: 1rem;
+}
+
+header img {
+    width: 7%;
 }
 
 /* Bordes */

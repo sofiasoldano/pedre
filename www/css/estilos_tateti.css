@@ -1,19 +1,55 @@
 /* Estilos Tateti */    
 
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+main {
+    height: 100%;
+}
+
 .tateti {
-    padding: 1rem;
+    margin: 1.5rem auto;
+    width: 50%;
+    height: 50%;
+}
+
+.tateti .fila{
+    display: flex;
+}
+
+.contenedor-casillero {
+    width: 150px;
 }
 
 .casillero {
-    min-height: 110px;
+    min-height: 68px;
     border: 2px solid black;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.fondo-ganador {
+    background-color:rgba(255, 255, 0, 0.33);
+}
+
 /* Elementos del Tateti */
 
 .jugada {
-    font-size: 4rem;
+    font-size: 2.5rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    font-family: Circular-Book;
+}
+
+#ganador {
+    text-align: center;
+    font-size: 1rem;
 }

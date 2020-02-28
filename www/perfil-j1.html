@@ -1,0 +1,44 @@
+
+<html>
+    <head>
+        <title>Datos Personales</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0">
+        <link rel="stylesheet" href="css/css.css">
+        <link rel="stylesheet" href="css/estilos_generales.css">
+        <link rel="stylesheet" href="css/estilos_perfiles.css">
+    </head>
+    <body onload="cargarDatos(1);">
+        <!-- Header -->
+        <header>
+            <a href="juegos.html"><img src="img/iconos/casita.png" alt="Home"></a>
+        </header>
+        <!-- Main -->
+        <main class="main-settings">
+            <h3>Editar Datos</h3>
+            <div class="settings-jugador">
+                <form id="formulario" method="post" action="" class="margin-bottom-2">
+                    <div>
+                        <div class="caja margin-bottom-4"> 
+                            <img src="img/camera.svg" alt="Camara" onclick=" defjugadores(1), capturePhoto();" id="imgjugador_1">
+                        </div>
+                        <div class="formulariojugador">
+                            <input type="text" name="nombre1" id="nombre1" placeholder="Nombre" class="margin-bottom-2" required>
+                            <input type="text" name="apodo1" id="apodo1" placeholder="Apodo" required>
+                        </div>
+                        <div id="puntos1"></div>
+                    </div>
+                </form>
+                <div>
+                    <a href="juegos.html" onclick="submitSettingsPerfiles(1)" class="guardar-perfil">Guardar</a>
+                </div> 
+            </div>
+            <div>
+                <img src="img/GamePattern.svg" alt="Game Pattern">
+            </div>
+        </main>
+        <script type="text/javascript" charset="utf-8" src="cordova.js"></script>
+        <script src="js/camera.js"></script>
+        <script src="js/app.js"></script>
+    </body>
+    </html>

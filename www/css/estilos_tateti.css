@@ -1,10 +1,4 @@
 /* Estilos Tateti */    
-
-header {
-    display: flex;
-    justify-content: space-between;
-}
-
 main {
     height: 100%;
 }

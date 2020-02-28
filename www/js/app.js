@@ -78,7 +78,6 @@ function validarForm() {
 function shuffleApodos() {
 
     for (var i = 0; i <= 1; i++) {
-        debugger
         var random = Math.floor(Math.random() * apodos_random.length);
         apodos_seleccionados.push(apodos_random[random]);
         apodos_random.splice(random, 1);
@@ -121,4 +120,27 @@ if(document.getElementsByClassName('page-tateti').length != 0){
     puntos2.innerHTML   = Store.load("puntos2");
     foto1.src           = Store.load("imagenjugador1");
     foto2.src           = Store.load("imagenjugador2");
+}
+
+// Perfiles
+
+function cargarDatos(jugador) {
+    var nombre         = document.getElementById("nombre"+jugador);
+    var apodo          = document.getElementById("apodo"+jugador);
+    var foto           = document.getElementById("imgjugador_"+jugador);
+
+    nombre.value   = Store.load("nombre"+jugador);
+    apodo.value    = Store.load("apodo"+jugador);
+    foto.src       = Store.load("imagenjugador"+jugador);
+}
+
+function submitSettingsPerfiles(jugador) {
+    if(confirm("¿Está seguro? Si modifica los datos se reiniciarán los puntos.")){
+        Store.save("nombre"+jugador,   document.getElementById("nombre"+jugador).value);
+        Store.save("apodo"+jugador,    document.getElementById("apodo"+jugador).value);
+        Store.save('puntos'+jugador,0);
+        validarForm();
+    } else {
+        return false
+    }
 }

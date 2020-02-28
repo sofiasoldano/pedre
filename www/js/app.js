@@ -116,8 +116,27 @@ if(document.getElementsByClassName('page-tateti').length != 0){
     nombre2.innerHTML   = Store.load("nombre2");
     apodo1.innerHTML    = Store.load("apodo1");
     apodo2.innerHTML    = Store.load("apodo2");
-    puntos1.innerHTML   = Store.load("puntos1");
-    puntos2.innerHTML   = Store.load("puntos2");
+    puntos1.innerHTML   = "Puntaje: " + Store.load("puntos1");
+    puntos2.innerHTML   = "Puntaje: " + Store.load("puntos2");
+    foto1.src           = Store.load("imagenjugador1");
+    foto2.src           = Store.load("imagenjugador2");
+}
+
+if(document.getElementsByClassName('page-memotest').length != 0){
+    var nombre1         = document.getElementById("nombre1");
+    var nombre2         = document.getElementById("nombre2");
+    var apodo1          = document.getElementById("apodo1");
+    var apodo2          = document.getElementById("apodo2");
+    var foto1           = document.getElementById("imgjugador_1");
+    var foto2           = document.getElementById("imgjugador_2");
+
+
+    nombre1.innerHTML   = Store.load("nombre1");
+    nombre2.innerHTML   = Store.load("nombre2");
+    apodo1.innerHTML    = Store.load("apodo1");
+    apodo2.innerHTML    = Store.load("apodo2");
+    puntos1.innerHTML   = "Puntaje: " + Store.load("puntos1");
+    puntos2.innerHTML   = "Puntaje: " + Store.load("puntos2");
     foto1.src           = Store.load("imagenjugador1");
     foto2.src           = Store.load("imagenjugador2");
 }

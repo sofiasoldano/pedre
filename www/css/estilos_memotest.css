@@ -1,4 +1,7 @@
-/* Estilos Tateti */    
+/* Estilos Memotest */    
+main {
+	height: 50%;
+}
 
 .caja {
 	padding :0.5rem;
@@ -8,5 +11,26 @@
 	height: 75px;
 }
 
-/* Elementos del Tateti */
+/* Elementos del Memotest */
 
+#titulo-dificultad {
+	text-align: center;
+    font-family: Circular-Book;
+    margin: 1rem;
+    margin-top: 2rem;
+}
+
+.carta-memotest {
+	border: 1px solid #00000014;
+}
+
+#cartas-recolectadas1, #cartas-recolectadas2 {
+	font-family: Circular-Book;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+#ganador {
+    text-align: center;
+    font-size: 1rem;
+}

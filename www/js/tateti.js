@@ -46,7 +46,17 @@ function eliminarEstiloTurno() {
 }
 
 function jugada() {
+
     if(!juego_terminado) {
+
+        if (jugador == 1) {
+            caja_j1[0].classList.remove("turno_jugador");
+            caja_j2[0].classList.add("turno_jugador");
+        } else {
+            caja_j2[0].classList.remove("turno_jugador");
+            caja_j1[0].classList.add("turno_jugador");
+        }
+
         // Si el casillero contiene la clase Jugado = Ya fue utilizado
         if(this.classList.contains('jugado')){
 
@@ -61,7 +71,6 @@ function jugada() {
             
             // Compruebo Jugador
             if (jugador == 1) {
-                estilizarTurnoJugador();
                 // En el h2 se escribe (X o O)
                 jugada.innerHTML = "X";
 
@@ -79,7 +88,6 @@ function jugada() {
                 jugador = 2;
 
             } else {
-                estilizarTurnoJugador();
                 jugada.innerHTML = "O";
 
                 // Agrego Jugada al Array
@@ -209,10 +217,12 @@ function comprobarGanador() {
 function sumarPuntos() {
     if (juego_terminado) {
         if (jugador == 1) {
+            caja_j1[0].classList.add("fondo-win");
             var puntos_actual = Store.load('puntos1');
             Store.save('puntos1', puntos_actual + 2);
             puntos_jugador1.innerHTML= Store.load('puntos1');
         } else {
+            caja_j2[0].classList.add("fondo-win");
             var puntos_actual = Store.load('puntos2');
             Store.save('puntos2', puntos_actual + 2);
             puntos_jugador2.innerHTML= Store.load('puntos2');
@@ -227,6 +237,8 @@ function resetearJuego() {
         casilleros[i].classList.remove('jugado');
         casilleros[i].classList.remove('fondo-ganador');
     }
+    caja_j1[0].classList.remove("fondo-win");
+    caja_j2[0].classList.remove("fondo-win");
     ganador.innerHTML = "";
     movimientos = 0;
     btn_reset.classList.add("display-none");

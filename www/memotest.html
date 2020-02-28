@@ -8,27 +8,51 @@
         <link rel="stylesheet" href="css/estilos_generales.css">
 		<link rel="stylesheet" href="css/estilos_memotest.css">
     </head>
-    <body>
+    <body class="page-memotest">
         <!-- Header -->
         <header>
-            <!-- Volver -->
-            <!-- Jugadores -->
-            <!-- Puntaje -->
-            <h3>Puntaje Jugador 1: <span id="puntos-jugador1"></span></h3>
-            <h3>Puntaje Jugador 2: <span id="puntos-jugador2"></span></h3>
+            <a href="juegos.html"><img src="img/iconos/casita.png" alt="Home"></a>
+            <h5>Memotest</h5>
         </header>
         <main>
             <!-- Memotest -->
             <section class="memotest" id="juego_memotest">
-                <h2 id="titulo-dificultad">Para comenzar seleccione la dificultad </h2>
-				<button class="btn-dificultad" data-dificultad="facil">Facil</button>
-				<button class="btn-dificultad" data-dificultad="dificil">Dificil</button>
+                <h4 id="titulo-dificultad">Para comenzar seleccione la dificultad </h4>
+				<button class="btn-dificultad boton-general margin-top-4" data-dificultad="facil">Facil</button>
+				<button class="btn-dificultad boton-general" data-dificultad="dificil">Dificil</button>
             </section>       
             <!-- Mensaje -->
-            <h2 id="ganador"></h2>
+            <h2 id="ganador" class="margin-top-2"></h2>
             <!-- Jugar de Nuevo -->
-            <button id="btn-reset" class="display-none">Jugar de Nuevo</button>
+            <button id="btn-reset" class="display-none boton-general">Jugar de Nuevo</button>
         </main>
+        <footer>
+            <div class="fila">
+                <div class="columna-xs-6">
+                    <div class='jugador1 float-right'>
+                        <div class="caja grid caja-j1">
+                            <img src="" id="imgjugador_1">
+                        </div>
+                        <div id="nombre1"></div>
+                        <div id="apodo1"></div>
+                        <div id="puntos1"></div>
+                        <div id="cartas-recolectadas1"><p>Cartas: </p></div>
+                    </div>
+                </div>
+                <div class="columna-xs-6">
+                    <div class='jugador2'>
+                        <div class="caja grid caja-j2">
+                            <img src="" id="imgjugador_2">
+                        </div>
+                        <div id="nombre2"></div>
+                        <div id="apodo2"></div>
+                        <div id="puntos2"></div>
+                        <div id="cartas-recolectadas2"><p>Cartas:</p></div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <script src="js/app.js"></script>
         <script src="js/memotest.js"></script>
     </body>
     </html>

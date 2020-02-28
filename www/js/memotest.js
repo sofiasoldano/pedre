@@ -15,28 +15,26 @@ var puntaje_j1			= 0;
 var puntaje_j2			= 0;
 var puntos_jugador1		= document.getElementById('puntos-jugador1'); 
 var puntos_jugador2		= document.getElementById('puntos-jugador2'); 
+var cartas_disponibles  = 0;
 
 // Variables Fichas Recolectadas por Jugador
 var fichas_j1			= 0;
 var fichas_j2			= 0;
+var cartas_recolectadas1 = document.getElementById("cartas-recolectadas1");
+var cartas_recolectadas2 = document.getElementById("cartas-recolectadas2");
 var fichas_jugadas = [];
 
 // Variables Seccion Introductoria Dificultad
 var titulo_dificultad	= document.getElementById('titulo-dificultad'); 
 var btn_dificultad		= document.getElementsByClassName('btn-dificultad');
+var dificultad;
 
 // Variables Seccion Juego
 var seccion_memotest	= document.getElementById('juego_memotest');
 // Variable Fila
 var fila_memotest;
-// Variables de Textos Instanciados a la Fila (Puntos parciales y Turno del Jugador)
-var h_jugador = document.createElement("p");    
-var turno_jugador;
-var contenedor_puntosparciales = document.createElement("div"); 
-var titulo_parcialesj1 = document.createElement("p");
-var titulo_parcialesj2 = document.createElement("p");
-var puntos_parcialesj1;
-var puntos_parcialesj2;
+var caja_j1         = document.getElementsByClassName('caja-j1');
+var caja_j2         = document.getElementsByClassName('caja-j2');
 
 // Array Random para Cartas
 var array_random		= [];
@@ -51,20 +49,43 @@ for (var i = 0; i < btn_dificultad.length; i++) {
     btn_dificultad[i].addEventListener('click', getCantidadFichasSegunDificultad);
 }
 
-//btn_reset.addEventListener('click', resetearJuego);
+btn_reset.addEventListener('click', resetearJuego);
 
 /* Funciones */
 
+function estilizarTurnoJugador() {
+    if (jugador == 1) {
+        caja_j2[0].classList.remove("turno_jugador");
+        caja_j1[0].classList.add("turno_jugador");
+    } else {
+        caja_j1[0].classList.remove("turno_jugador");
+        caja_j2[0].classList.add("turno_jugador");
+    }
+}
+
+function eliminarEstiloTurno() {
+    caja_j1[0].classList.remove("turno_jugador");
+    caja_j2[0].classList.remove("turno_jugador");
+}
+
 function getCantidadFichasSegunDificultad () {
-	
+    
+    //Funcion para que, al Iniciar, ya se sepa de quien es el turno
+    estilizarTurnoJugador();
 	// Si el boton tiene data de dificultad Facil
 	if (this.getAttribute("data-dificultad") == "facil") {
+        this.classList.add("boton-elegido");
 		// Deja de mostrar todo lo que concierne a Seccion Dificultad
-		deshabilitarSeccionDificultad();
+        deshabilitarSeccionDificultad();
+        cartas_disponibles = 16;
+        dificultad = "facil";
 		// Imprime 16 cartas 
  		imprimirCartas(16);
 	} else {
-		deshabilitarSeccionDificultad();
+        this.classList.add("boton-elegido");
+        deshabilitarSeccionDificultad();
+        cartas_disponibles = 36;
+        dificultad = "dificil";
 		// Imprime 36 cartas 
 		imprimirCartas(36);
 	}
@@ -86,18 +107,12 @@ function imprimirCartas(cantidad) {
 	//Se guarda en una variable a la fila
 	fila_memotest = seccion_memotest.children[3];
     
-    //Instancio Turno Jugador
-    turno_jugador = document.createTextNode("Turno Jugador: " + jugador);
-    h_jugador.appendChild(turno_jugador);  
-    fila_memotest.appendChild(h_jugador);
-    h_jugador.classList.add('jugador');
-    
     //Instancio Cartas
 	for (var i = 0; i < cantidad; i++) {
 		//Instancio la carta
 		var cartas_columna		= document.createElement("div");
 		var cartas_caja			= document.createElement("div");
-		cartas_caja.classList.add("caja", "grid", "fondo-rojo", "carta-memotest");
+		cartas_caja.classList.add("caja", "grid", "carta-memotest");
 		cartas_columna.appendChild(cartas_caja);
 
 		// Depende el nivel cambio el numero de columnas
@@ -112,15 +127,6 @@ function imprimirCartas(cantidad) {
 		}
 		
 	}
-
-    //Instancio Puntos Parciales
-    puntos_parcialesj1 = document.createTextNode("Puntos Jugador 1 : " + fichas_j1);
-    puntos_parcialesj2 = document.createTextNode("Puntos Jugador 2 : " + fichas_j2);
-    titulo_parcialesj1.appendChild(puntos_parcialesj1); 
-    titulo_parcialesj2.appendChild(puntos_parcialesj2); 
-    contenedor_puntosparciales.appendChild(titulo_parcialesj1);
-    contenedor_puntosparciales.appendChild(titulo_parcialesj2);
-    fila_memotest.appendChild(contenedor_puntosparciales);
 
 	// Guardo la mitad del numero de cartas (Para hacer PARES)
 	for (var j = 0; j < (cantidad/2); j++) {
@@ -176,6 +182,7 @@ function instanciarImagenes() {
 function jugada() {
 
     if(!juego_terminado) {
+
         this.classList.add('notclick');
         this.children[0].classList.remove("visibility-hidden");
         var ficha    = this.getAttribute("data-carta");
@@ -183,62 +190,24 @@ function jugada() {
         console.log(fichas_jugadas);
 
         if (fichas_jugadas.length == 2) {
+            if (jugador == 1) {
+                caja_j1[0].classList.remove("turno_jugador");
+                caja_j2[0].classList.add("turno_jugador");
+            } else {
+                caja_j2[0].classList.remove("turno_jugador");
+                caja_j1[0].classList.add("turno_jugador");
+            }
             comprobarGanador();
             fichas_jugadas = [];
             //console.log(fichas_jugadas);
         }
-           /*
-            // Compruebo Jugador
-            if (jugador == 1) {
-
-                // En el h2 se escribe (X o O)
-                jugada.innerHTML = "X";
-
-                // Agrego Jugada al Array
-                var fila    = this.getAttribute("data-fila");
-                var columna = this.getAttribute("data-columna");
-                casilla[fila][columna] = jugador;
-                
-                // Sumo Movimientos
-                movimientos++;
-                
-                // Verifico si gano
-                comprobarGanador();
-
-                // Paso de Turno
-                jugador = 2;
-            } else {
-
-                jugada.innerHTML = "O";
-
-                // Agrego Jugada al Array
-                var fila    = this.getAttribute("data-fila");
-                var columna = this.getAttribute("data-columna");
-                casilla[fila][columna] = jugador;
-                
-                // Sumo Movimientos
-                movimientos++;
-                
-                // Verifico si gano
-                comprobarGanador();
-
-                // Paso de Turno
-                jugador = 1;
-            }
-
-            // Se agregar la clase Jugada (estilos)
-            jugada.classList.add("jugada");
-
-            // Se apendiza al div
-            this.appendChild(jugada);
-        }*/
     } else {
         return false
     }
 }
 
 function comprobarGanador() {
-console.log("holis");
+
     if(fichas_jugadas[0] == fichas_jugadas[1]){
         sumarPuntosParciales();
         var ficha = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "']");
@@ -246,7 +215,9 @@ console.log("holis");
         ficha.item(0).classList.add("notclick");
         ficha.item(1).classList.add("notclick");
         
-    } else{
+        cartas_disponibles = cartas_disponibles - 2;
+        chequearCartasDisponibles();
+    } else {
         var caja1 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "']");
         var caja2 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[1] + "']");
         
@@ -254,8 +225,6 @@ console.log("holis");
         caja2.item(0).classList.remove("notclick");
         caja1.item(1).classList.remove("notclick");
         caja2.item(1).classList.remove("notclick");
-        
-        
         
         var ficha1 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[0] + "'] img");
         var ficha2 = document.querySelectorAll(".carta-memotest[data-carta='" + fichas_jugadas[1] + "'] img");
@@ -269,108 +238,79 @@ console.log("holis");
         }, 500);
     }
     
-     cambiarJugador();
-	/*for(var i=0; i<3;i++) {
-
-		//Si es Horizontal
-		if (casilla[i][0] === jugador && casilla[i][1] === jugador && casilla[i][2] === jugador) {
-
-            ganador.innerHTML = 'Ganaste Jugador ' + jugador;
-
-            btn_reset.classList.remove("display-none");
-            
-            juego_terminado = true;
-            sumarPuntos();
-			return false;
-        }
-
-		//Si es vertical
-		if (casilla[0][i] === jugador && casilla[1][i] === jugador && casilla[2][i] === jugador) {
-            ganador.innerHTML = 'Ganaste Jugador ' + jugador;
-
-            btn_reset.classList.remove("display-none");
-            
-            juego_terminado = true;
-            sumarPuntos();
-			return false;
-		}		  	
-    }
-
-    //Si es diagonal 
-    if (casilla[0][0] === jugador && casilla[1][1] === jugador && casilla[2][2] === jugador){
-        ganador.innerHTML = 'Ganaste Jugador ' + jugador;
-        
-		btn_reset.classList.remove("display-none");
-   
-        juego_terminado = true;
-        sumarPuntos();
-        return false;
-    }
-
-    //Si es diagonal invertida
-    if (casilla[0][2] === jugador && casilla[1][1] === jugador && casilla[2][0] === jugador){
-        ganador.innerHTML = 'Ganaste Jugador ' + jugador;
-
-        btn_reset.classList.remove("display-none");
-        
-        juego_terminado = true;
-        sumarPuntos();
-        return false;
-    }*/
+    cambiarJugador();
 }
+
+function chequearCartasDisponibles() {
+    if (cartas_disponibles == 0) {
+        juego_terminado = true;
+        if (fichas_j1 == fichas_j2) {
+            //Empate
+            caja_j1[0].classList.add("fondo-win");
+            caja_j2[0].classList.add("fondo-win");
+            ganador.innerHTML = "Empate!";
+            seccion_memotest.classList.add('display-none');
+            btn_reset.classList.remove("display-none");
+        } else {
+            sumarPuntos();
+        }
+    }
+}
+
 function cambiarJugador(){
+
     if(jugador == 1){
         jugador = 2;
     } else{
         jugador = 1;
     }
-    turno_jugador = document.createTextNode("Turno Jugador: " + jugador);
-    console.log(jugador);
 }
+
 function sumarPuntosParciales() {
-    //debugger
+
     if (jugador == 1) {
         fichas_j1++;
-        puntos_parcialesj1 = document.createTextNode("Puntos Jugador 1 : " + fichas_j1);
-        
-        
-        console.log(fichas_j1);
+        cartas_recolectadas1.innerHTML = "Cartas: " + fichas_j1;
     } else {
         fichas_j2++;
-        puntos_parcialesj2 = document.createTextNode("Puntos Jugador 2 : " + fichas_j2);
-        
-        
-        console.log(fichas_j2);
+        cartas_recolectadas2.innerHTML = "Cartas: " + fichas_j2;
     }
-    
 }
 
 function sumarPuntos() {
+
+    if(dificultad == "facil") {
+        darPuntosAGanador(5);
+    } else {
+        darPuntosAGanador(10);
+    }
+}
+
+function darPuntosAGanador(puntos) {
     if (juego_terminado) {
-        if (jugador == 1) {
-            puntaje_j1 = puntaje_j1 +1;
-            puntos_jugador1.innerHTML= puntaje_j1;
-            console.log("PUNTOS 1:" + puntaje_j1);
+        if (fichas_j1 > fichas_j2) {
+            eliminarEstiloTurno();
+            ganador.innerHTML = 'Ganaste Jugador ' + jugador;
+            
+            caja_j1[0].classList.add("fondo-win");
+            var puntos_actual = Store.load('puntos1');
+            Store.save('puntos1', puntos_actual + puntos);
+            puntos1.innerHTML= "Puntaje:" + Store.load('puntos1');
         } else {
-            puntaje_j2 = puntaje_j2 +1;
-            puntos_jugador2.innerHTML= puntaje_j2;
-            console.log("PUNTOS 2:" + puntaje_j2);
+            eliminarEstiloTurno();
+            ganador.innerHTML = 'Ganaste Jugador ' + jugador;
+            caja_j2[0].classList.add("fondo-win");
+            var puntos_actual = Store.load('puntos2');
+            Store.save('puntos2', puntos_actual + puntos);
+            puntos2.innerHTML= "Puntaje:" + Store.load('puntos2');
         }
     }
+
+    seccion_memotest.classList.add('display-none');
+    btn_reset.classList.remove("display-none");
 }
 
 function resetearJuego() {
 
-    for (var i = 0; i < casilleros.length; i++) {
-        casilleros[i].innerHTML = "";
-        casilleros[i].classList.remove('jugado');
-    }
-    ganador.innerHTML = "";
-    btn_reset.classList.add("display-none");
-    casilla = [
-        [0, 0, 0],
-        [0, 0, 0],
-        [0, 0, 0]
-    ];
-    juego_terminado = false;
+    window.location.href = "memotest.html";
 }
